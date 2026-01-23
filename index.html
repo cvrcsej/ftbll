@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RETRO FOOTBALL AUCTIONEER</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="title">MULTIPLAYER AUCTION GAME</div>
+            <div class="subtitle">PROCEDURAL PLAYER GENERATOR V4.0 - MULTIPLAYER EDITION</div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- LEFT COLUMN: MANAGERS -->
+            <div class="multiplayer-section paper-card">
+                <div class="section-header-tabs"
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <div class="section-title active-tab">MANAGER HQ</div>
+                </div>
+
+                <div id="view-manage">
+                    <div class="add-player-form">
+                        <input type="text" id="player-name-input" placeholder="Enter manager name..." maxlength="20">
+                        <button id="add-player-btn" class="add-player-btn">ADD</button>
+                    </div>
+
+                    <div id="players-list" class="players-list">
+                        <!-- Dynamic player cards will be added here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- CENTER COLUMN: AUCTION ROOM -->
+            <div class="auction-center-column">
+                <div class="player-panel paper-card" style="margin-bottom: 20px;">
+                    <div id="player-display" class="typing">
+                        <div class="startup-screen">
+                            <div class="system-msg">SYSTEM READY...</div>
+                            <div class="system-msg">ADD PLAYERS TO START</div>
+                            <div class="blink-cursor">_</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BIDDING SECTION -->
+                <div id="bidding-section" class="bidding-section paper-card" style="display: none;">
+                    <div class="section-title">LIVE BIDDING</div>
+
+                    <div class="current-bid-display">
+                        <div class="bid-info">
+                            <span class="bid-label-small">CURRENT HIGHEST BID:</span>
+                            <div class="bid-amount">$<span id="current-bid-amount">0</span>M</div>
+                            <div class="bid-leader">by <span id="current-bid-leader">-</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Timer and Current Player -->
+                    <div class="auction-timer-section">
+                        <div class="current-player-turn">
+                            <div class="turn-label">CURRENT BIDDER:</div>
+                            <div id="current-bidder-name" class="current-bidder-name">-</div>
+                        </div>
+                        <div class="timer-display">
+                            <div class="timer-label">TIME REMAINING:</div>
+                            <div id="timer-value" class="timer-value">20</div>
+                            <div class="timer-progress-bar">
+                                <div id="timer-progress" class="timer-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bid Slider -->
+                    <div class="bid-slider-section">
+                        <div class="slider-label">
+                            <span>Your Bid: $<span id="slider-bid-amount">0</span>M</span>
+                            <span class="slider-budget">Budget: $<span id="slider-player-budget">0</span>M</span>
+                        </div>
+                        <input type="range" id="bid-slider" class="bid-slider" min="0" max="100" value="0" step="0.1">
+                        <div class="slider-markers">
+                            <span>Base</span>
+                            <span>Max Budget</span>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="auction-controls">
+                        <button id="place-bid-btn" class="place-bid-btn-new">PLACE BID</button>
+                        <button id="pass-turn-btn" class="pass-turn-btn">PASS</button>
+                        <button id="pause-auction-btn" class="pause-auction-btn">PAUSE</button>
+                    </div>
+
+                    <div class="bid-history">
+                        <div class="bid-history-title">BID HISTORY</div>
+                        <div id="bid-history-list" class="bid-history-list">
+                            <div class="no-bids">No bids yet - Starting at base price</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTION BUTTONS -->
+                <div class="control-buttons paper-card">
+                    <button id="next-player-btn" class="next-player-btn">GENERATE TARGET</button>
+                    <button id="sold-btn" class="sold-btn" disabled>SOLD TO HIGHEST BIDDER</button>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: FILTERS & TOOLS -->
+            <div class="side-tools-column">
+                <div class="filters-section paper-card">
+                    <div class="section-title">TARGET PARAMETERS</div>
+
+                    <div class="filters-grid" style="display: flex; flex-direction: column; gap: 15px;">
+                        <div class="filter-group">
+                            <div class="filter-label">ERA</div>
+                            <select id="era-filter">
+                                <option value="all">ALL ERAS</option>
+                                <option value="modern">MODERN (2018-2025)</option>
+                                <option value="legends">LEGENDS (1990-2015)</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <div class="filter-label">LEAGUE</div>
+                            <select id="league-filter">
+                                <option value="all">GLOBAL SEARCH</option>
+                                <option value="Premier League">PREMIER LEAGUE</option>
+                                <option value="La Liga">LA LIGA</option>
+                                <option value="Serie A">SERIE A</option>
+                                <option value="Bundesliga">BUNDESLIGA</option>
+                                <option value="Ligue 1">LIGUE 1</option>
+                                <option value="International">INTERNATIONAL</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <div class="filter-label">POSITION</div>
+                            <select id="position-filter">
+                                <option value="all">ANY POSITION</option>
+                                <option value="GK">GOALKEEPER</option>
+                                <option value="DEF">DEFENDER</option>
+                                <option value="MID">MIDFIELDER</option>
+                                <option value="FWD">FORWARD</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <div class="filter-label">TIER</div>
+                            <select id="tier-filter">
+                                <option value="all">ANY TIER</option>
+                                <option value="S">S - ICON</option>
+                                <option value="A">A - STAR</option>
+                                <option value="B">B - PRO</option>
+                                <option value="C">C - ROOKIE</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group full-width">
+                            <div class="filter-label">CLUBS</div>
+                            <div id="club-filters-container" class="club-scroll-container" style="max-height: 150px;">
+                                <!-- injected -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group" style="margin-top: 15px;">
+                        <div class="filter-label">INIT BUDGET ($M)</div>
+                        <input type="number" id="budget-input" value="100" style="width: 100%;">
+                    </div>
+                </div>
+
+                <div class="stats-card paper-card" style="margin-top: 20px; text-align: center;">
+                    <div class="section-title" style="font-size: 14px; margin-bottom: 10px;">SESSION STATS</div>
+                    <div class="stats-bar">
+                        <span id="players-shown">0</span> SHOWN / <span id="players-remaining">0</span> LEFT
+                    </div>
+                    <button id="reset-btn" class="reset-btn" style="margin-top: 15px; width: 100%;">RESET
+                        SESSION</button>
+                    <a href="squad.html" class="squad-btn-link"
+                        style="display: block; margin-top: 10px; text-decoration: none; border: 2px solid var(--ink-black); padding: 8px; background: var(--paper-bg); color: var(--ink-black); font-weight: bold; font-size: 12px; text-align: center;">VISUAL
+                        SQUAD BUILDER →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SALE MODAL -->
+    <div id="sale-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>RECORD SALE</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="sale-price">Sale Price ($M):</label>
+                    <input type="number" id="sale-price" min="0" step="0.1" placeholder="Enter sale price">
+                </div>
+                <div class="form-group">
+                    <label for="buyer-select">Buyer:</label>
+                    <select id="buyer-select">
+                        <option value="">Select a player...</option>
+                    </select>
+                </div>
+                <div id="sale-error" class="sale-error"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-sale-btn" class="confirm-sale-btn">CONFIRM SALE</button>
+                <button id="cancel-sale-btn" class="cancel-sale-btn">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

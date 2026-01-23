@@ -1,0 +1,335 @@
+// ========================================
+// RETRO FOOTBALL AUCTIONEER - PLAYER DATABASE
+// 500+ Players: Massive Database
+// ========================================
+
+const PLAYERS_DATABASE = [
+    // ==========================================
+    // PREMIER LEAGUE (FULL SQUADS 24/25)
+    // ==========================================
+
+    // MANCHESTER CITY
+    { name: "Erling Haaland", club: "Manchester City", era: "modern", league: "Premier League", position: "ST", age: 24, marketValue: 180, tier: "S", playStyle: "Terminator" },
+    { name: "Kevin De Bruyne", club: "Manchester City", era: "modern", league: "Premier League", position: "CAM", age: 33, marketValue: 45, tier: "S", playStyle: "King Kev" },
+    { name: "Rodri", club: "Manchester City", era: "modern", league: "Premier League", position: "CDM", age: 28, marketValue: 130, tier: "S", playStyle: "Unbeatable" },
+    { name: "Phil Foden", club: "Manchester City", era: "modern", league: "Premier League", position: "LW", age: 24, marketValue: 130, tier: "S", playStyle: "Sniper" },
+    { name: "Bernardo Silva", club: "Manchester City", era: "modern", league: "Premier League", position: "RW", age: 30, marketValue: 60, tier: "A", playStyle: "Bubblegum" },
+    { name: "Ruben Dias", club: "Manchester City", era: "modern", league: "Premier League", position: "CB", age: 27, marketValue: 70, tier: "A", playStyle: "Leader" },
+    { name: "Josko Gvardiol", club: "Manchester City", era: "modern", league: "Premier League", position: "LB", age: 22, marketValue: 90, tier: "A", playStyle: "Tank" },
+    { name: "Ederson", club: "Manchester City", era: "modern", league: "Premier League", position: "GK", age: 31, marketValue: 35, tier: "A", playStyle: "Distributor" },
+    { name: "Jeremy Doku", club: "Manchester City", era: "modern", league: "Premier League", position: "RW", age: 22, marketValue: 60, tier: "B", playStyle: "Flash" },
+    { name: "Jack Grealish", club: "Manchester City", era: "modern", league: "Premier League", position: "LW", age: 29, marketValue: 55, tier: "B", playStyle: "Super Jack" },
+    { name: "Mateo Kovacic", club: "Manchester City", era: "modern", league: "Premier League", position: "CM", age: 30, marketValue: 30, tier: "B", playStyle: "Carrier" },
+    { name: "Manuel Akanji", club: "Manchester City", era: "modern", league: "Premier League", position: "CB", age: 29, marketValue: 40, tier: "B", playStyle: "Calculator" },
+    { name: "John Stones", club: "Manchester City", era: "modern", league: "Premier League", position: "CB", age: 30, marketValue: 35, tier: "B", playStyle: "Barnsley Beckenbauer" },
+    { name: "Kyle Walker", club: "Manchester City", era: "modern", league: "Premier League", position: "RB", age: 34, marketValue: 15, tier: "B", playStyle: "Recovery" },
+    { name: "Nathan Ake", club: "Manchester City", era: "modern", league: "Premier League", position: "CB", age: 29, marketValue: 35, tier: "B", playStyle: "Versatile" },
+    { name: "Rico Lewis", club: "Manchester City", era: "modern", league: "Premier League", position: "RB", age: 19, marketValue: 40, tier: "B", playStyle: "Pep's Son" },
+    { name: "Savinho", club: "Manchester City", era: "modern", league: "Premier League", position: "RW", age: 20, marketValue: 50, tier: "B", playStyle: "Brazilian Flair" },
+    { name: "Ilkay Gundogan", club: "Manchester City", era: "modern", league: "Premier League", position: "CM", age: 33, marketValue: 20, tier: "B", playStyle: "Clutch" },
+    { name: "Stefan Ortega", club: "Manchester City", era: "modern", league: "Premier League", position: "GK", age: 31, marketValue: 10, tier: "C", playStyle: "Shot Stopper" },
+    { name: "Matheus Nunes", club: "Manchester City", era: "modern", league: "Premier League", position: "CM", age: 26, marketValue: 40, tier: "B", playStyle: "Drifty" },
+
+    // ARSENAL
+    { name: "Bukayo Saka", club: "Arsenal", era: "modern", league: "Premier League", position: "RW", age: 23, marketValue: 120, tier: "S", playStyle: "Starboy" },
+    { name: "Martin Odegaard", club: "Arsenal", era: "modern", league: "Premier League", position: "CAM", age: 26, marketValue: 100, tier: "A", playStyle: "Maestro" },
+    { name: "Declan Rice", club: "Arsenal", era: "modern", league: "Premier League", position: "CDM", age: 26, marketValue: 110, tier: "A", playStyle: "Base" },
+    { name: "William Saliba", club: "Arsenal", era: "modern", league: "Premier League", position: "CB", age: 23, marketValue: 90, tier: "A", playStyle: "Rolls Royce" },
+    { name: "Gabriel Magalhaes", club: "Arsenal", era: "modern", league: "Premier League", position: "CB", age: 26, marketValue: 65, tier: "B", playStyle: "Big Gabi" },
+    { name: "Kai Havertz", club: "Arsenal", era: "modern", league: "Premier League", position: "ST", age: 25, marketValue: 70, tier: "B", playStyle: "Space Interpreter" },
+    { name: "Gabriel Martinelli", club: "Arsenal", era: "modern", league: "Premier League", position: "LW", age: 23, marketValue: 60, tier: "B", playStyle: "Speedster" },
+    { name: "Ben White", club: "Arsenal", era: "modern", league: "Premier League", position: "RB", age: 27, marketValue: 50, tier: "B", playStyle: "Overlap" },
+    { name: "Jurrien Timber", club: "Arsenal", era: "modern", league: "Premier League", position: "LB", age: 23, marketValue: 45, tier: "B", playStyle: "Inverted" },
+    { name: "Thomas Partey", club: "Arsenal", era: "modern", league: "Premier League", position: "CDM", age: 31, marketValue: 25, tier: "B", playStyle: "Octopus" },
+    { name: "David Raya", club: "Arsenal", era: "modern", league: "Premier League", position: "GK", age: 29, marketValue: 45, tier: "B", playStyle: "Hands" },
+    { name: "Leandro Trossard", club: "Arsenal", era: "modern", league: "Premier League", position: "LW", age: 29, marketValue: 35, tier: "B", playStyle: "Finisher" },
+    { name: "Mikel Merino", club: "Arsenal", era: "modern", league: "Premier League", position: "CM", age: 28, marketValue: 40, tier: "B", playStyle: "Duels" },
+    { name: "Gabriel Jesus", club: "Arsenal", era: "modern", league: "Premier League", position: "ST", age: 27, marketValue: 50, tier: "B", playStyle: "Street" },
+    { name: "Riccardo Calafiori", club: "Arsenal", era: "modern", league: "Premier League", position: "LB", age: 22, marketValue: 50, tier: "B", playStyle: "Aura" },
+    { name: "Raheem Sterling", club: "Arsenal", era: "modern", league: "Premier League", position: "LW", age: 29, marketValue: 30, tier: "B", playStyle: "Experience" },
+    { name: "Takehiro Tomiyasu", club: "Arsenal", era: "modern", league: "Premier League", position: "RB", age: 26, marketValue: 30, tier: "C", playStyle: "Solid" },
+    { name: "Oleksandr Zinchenko", club: "Arsenal", era: "modern", league: "Premier League", position: "LB", age: 28, marketValue: 30, tier: "C", playStyle: "Technique" },
+
+    // LIVERPOOL
+    { name: "Mohamed Salah", club: "Liverpool", era: "modern", league: "Premier League", position: "RW", age: 32, marketValue: 80, tier: "S", playStyle: "Pharaoh" },
+    { name: "Virgil van Dijk", club: "Liverpool", era: "modern", league: "Premier League", position: "CB", age: 33, marketValue: 30, tier: "A", playStyle: "Calm" },
+    { name: "Trent Alexander-Arnold", club: "Liverpool", era: "modern", league: "Premier League", position: "RB", age: 26, marketValue: 70, tier: "A", playStyle: "Right Foot" },
+    { name: "Alisson Becker", club: "Liverpool", era: "modern", league: "Premier League", position: "GK", age: 32, marketValue: 35, tier: "A", playStyle: "Savior" },
+    { name: "Alexis Mac Allister", club: "Liverpool", era: "modern", league: "Premier League", position: "CM", age: 25, marketValue: 70, tier: "A", playStyle: "Smart" },
+    { name: "Luis Diaz", club: "Liverpool", era: "modern", league: "Premier League", position: "LW", age: 27, marketValue: 75, tier: "A", playStyle: "Electric" },
+    { name: "Dominik Szoboszlai", club: "Liverpool", era: "modern", league: "Premier League", position: "CM", age: 24, marketValue: 65, tier: "B", playStyle: "Power" },
+    { name: "Ryan Gravenberch", club: "Liverpool", era: "modern", league: "Premier League", position: "CDM", age: 22, marketValue: 55, tier: "B", playStyle: "Glide" },
+    { name: "Ibrahima Konate", club: "Liverpool", era: "modern", league: "Premier League", position: "CB", age: 25, marketValue: 50, tier: "B", playStyle: "Wall" },
+    { name: "Diogo Jota", club: "Liverpool", era: "modern", league: "Premier League", position: "ST", age: 27, marketValue: 50, tier: "B", playStyle: "Slotted" },
+    { name: "Darwin Nunez", club: "Liverpool", era: "modern", league: "Premier League", position: "ST", age: 25, marketValue: 60, tier: "B", playStyle: "Chaos" },
+    { name: "Andrew Robertson", club: "Liverpool", era: "modern", league: "Premier League", position: "LB", age: 30, marketValue: 30, tier: "B", playStyle: "Workhorse" },
+    { name: "Cody Gakpo", club: "Liverpool", era: "modern", league: "Premier League", position: "LW", age: 25, marketValue: 50, tier: "B", playStyle: "Direct" },
+    { name: "Curtis Jones", club: "Liverpool", era: "modern", league: "Premier League", position: "CM", age: 23, marketValue: 40, tier: "C", playStyle: "Scouse" },
+    { name: "Harvey Elliott", club: "Liverpool", era: "modern", league: "Premier League", position: "CAM", age: 21, marketValue: 35, tier: "C", playStyle: "Young Gun" },
+
+    // CHELSEA
+    { name: "Cole Palmer", club: "Chelsea", era: "modern", league: "Premier League", position: "CAM", age: 22, marketValue: 110, tier: "A", playStyle: "Cold" },
+    { name: "Moises Caicedo", club: "Chelsea", era: "modern", league: "Premier League", position: "CDM", age: 23, marketValue: 70, tier: "B", playStyle: "Kante 2.0" },
+    { name: "Enzo Fernandez", club: "Chelsea", era: "modern", league: "Premier League", position: "CM", age: 24, marketValue: 65, tier: "B", playStyle: "Vision" },
+    { name: "Levi Colwill", club: "Chelsea", era: "modern", league: "Premier League", position: "CB", age: 21, marketValue: 55, tier: "B", playStyle: "Ball Playing" },
+    { name: "Nicolas Jackson", club: "Chelsea", era: "modern", league: "Premier League", position: "ST", age: 23, marketValue: 45, tier: "B", playStyle: "Runner" },
+    { name: "Noni Madueke", club: "Chelsea", era: "modern", league: "Premier League", position: "RW", age: 22, marketValue: 40, tier: "C", playStyle: "Tricky" },
+    { name: "Christopher Nkunku", club: "Chelsea", era: "modern", league: "Premier League", position: "CF", age: 26, marketValue: 65, tier: "B", playStyle: "Balloon" },
+    { name: "Reece James", club: "Chelsea", era: "modern", league: "Premier League", position: "RB", age: 25, marketValue: 40, tier: "B", playStyle: "Stamford Fridge" },
+    { name: "Marc Cucurella", club: "Chelsea", era: "modern", league: "Premier League", position: "LB", age: 26, marketValue: 35, tier: "C", playStyle: "Hair" },
+    { name: "Malo Gusto", club: "Chelsea", era: "modern", league: "Premier League", position: "RB", age: 21, marketValue: 40, tier: "C", playStyle: "Rapid" },
+    { name: "Pedro Neto", club: "Chelsea", era: "modern", league: "Premier League", position: "RW", age: 24, marketValue: 50, tier: "B", playStyle: "Pace" },
+    { name: "Joao Felix", club: "Chelsea", era: "modern", league: "Premier League", position: "SS", age: 24, marketValue: 40, tier: "B", playStyle: "Silky" },
+    { name: "Jadon Sancho", club: "Chelsea", era: "modern", league: "Premier League", position: "LW", age: 24, marketValue: 35, tier: "B", playStyle: "Skill" },
+    { name: "Robert Sanchez", club: "Chelsea", era: "modern", league: "Premier League", position: "GK", age: 26, marketValue: 25, tier: "C", playStyle: "Tall" },
+
+    // MAN UNITED
+    { name: "Bruno Fernandes", club: "Man Utd", era: "modern", league: "Premier League", position: "CAM", age: 30, marketValue: 60, tier: "A", playStyle: "Magnifico" },
+    { name: "Marcus Rashford", club: "Man Utd", era: "modern", league: "Premier League", position: "LW", age: 27, marketValue: 50, tier: "B", playStyle: "MBE" },
+    { name: "Kobbie Mainoo", club: "Man Utd", era: "modern", league: "Premier League", position: "CM", age: 19, marketValue: 60, tier: "B", playStyle: "Smooth" },
+    { name: "Alejandro Garnacho", club: "Man Utd", era: "modern", league: "Premier League", position: "RW", age: 20, marketValue: 55, tier: "B", playStyle: "Bicycle" },
+    { name: "Lisandro Martinez", club: "Man Utd", era: "modern", league: "Premier League", position: "CB", age: 26, marketValue: 45, tier: "B", playStyle: "Butcher" },
+    { name: "Andre Onana", club: "Man Utd", era: "modern", league: "Premier League", position: "GK", age: 28, marketValue: 35, tier: "B", playStyle: "Ball Playing GK" },
+    { name: "Rasmus Hojlund", club: "Man Utd", era: "modern", league: "Premier League", position: "ST", age: 21, marketValue: 55, tier: "B", playStyle: "Dane" },
+    { name: "Diogo Dalot", club: "Man Utd", era: "modern", league: "Premier League", position: "RB", age: 25, marketValue: 40, tier: "B", playStyle: "Engine" },
+    { name: "Matthijs de Ligt", club: "Man Utd", era: "modern", league: "Premier League", position: "CB", age: 25, marketValue: 50, tier: "B", playStyle: "Strong" },
+    { name: "Noussair Mazraoui", club: "Man Utd", era: "modern", league: "Premier League", position: "RB", age: 26, marketValue: 30, tier: "C", playStyle: "Tech" },
+    { name: "Manuel Ugarte", club: "Man Utd", era: "modern", league: "Premier League", position: "CDM", age: 23, marketValue: 45, tier: "B", playStyle: "Ball Winner" },
+    { name: "Joshua Zirkzee", club: "Man Utd", era: "modern", league: "Premier League", position: "ST", age: 23, marketValue: 40, tier: "C", playStyle: "False 9" },
+    { name: "Amad Diallo", club: "Man Utd", era: "modern", league: "Premier League", position: "RW", age: 22, marketValue: 30, tier: "C", playStyle: "Left Foot" },
+    { name: "Leny Yoro", club: "Man Utd", era: "modern", league: "Premier League", position: "CB", age: 19, marketValue: 45, tier: "B", playStyle: "Future" },
+    { name: "Luke Shaw", club: "Man Utd", era: "modern", league: "Premier League", position: "LB", age: 29, marketValue: 25, tier: "C", playStyle: "Solid" },
+
+    // TOTTENHAM
+    { name: "Son Heung-min", club: "Tottenham", era: "modern", league: "Premier League", position: "LW", age: 32, marketValue: 50, tier: "A", playStyle: "Finisher" },
+    { name: "James Maddison", club: "Tottenham", era: "modern", league: "Premier League", position: "CAM", age: 28, marketValue: 45, tier: "B", playStyle: "Darts" },
+    { name: "Micky van de Ven", club: "Tottenham", era: "modern", league: "Premier League", position: "CB", age: 23, marketValue: 55, tier: "B", playStyle: "Speed" },
+    { name: "Cristian Romero", club: "Tottenham", era: "modern", league: "Premier League", position: "CB", age: 26, marketValue: 60, tier: "B", playStyle: "Aggressive" },
+    { name: "Dominic Solanke", club: "Tottenham", era: "modern", league: "Premier League", position: "ST", age: 27, marketValue: 60, tier: "B", playStyle: "Pressing" },
+    { name: "Brennan Johnson", club: "Tottenham", era: "modern", league: "Premier League", position: "RW", age: 23, marketValue: 45, tier: "B", playStyle: "Pace" },
+    { name: "Dejan Kulusevski", club: "Tottenham", era: "modern", league: "Premier League", position: "RW", age: 24, marketValue: 50, tier: "B", playStyle: "Engine" },
+    { name: "Pedro Porro", club: "Tottenham", era: "modern", league: "Premier League", position: "RB", age: 25, marketValue: 45, tier: "B", playStyle: "Shooter" },
+    { name: "Destiny Udogie", club: "Tottenham", era: "modern", league: "Premier League", position: "LB", age: 22, marketValue: 45, tier: "B", playStyle: "Inverted" },
+    { name: "Guglielmo Vicario", club: "Tottenham", era: "modern", league: "Premier League", position: "GK", age: 28, marketValue: 35, tier: "B", playStyle: "Venom" },
+    { name: "Pape Matar Sarr", club: "Tottenham", era: "modern", league: "Premier League", position: "CM", age: 22, marketValue: 40, tier: "C", playStyle: "Legs" },
+    { name: "Yves Bissouma", club: "Tottenham", era: "modern", league: "Premier League", position: "CDM", age: 28, marketValue: 30, tier: "C", playStyle: "Control" },
+
+    // PREMIER LEAGUE REST
+    { name: "Alexander Isak", club: "Newcastle", era: "modern", league: "Premier League", position: "ST", age: 25, marketValue: 75, tier: "A", playStyle: "Henry 2.0" },
+    { name: "Bruno Guimaraes", club: "Newcastle", era: "modern", league: "Premier League", position: "CM", age: 27, marketValue: 80, tier: "A", playStyle: "Tempo" },
+    { name: "Anthony Gordon", club: "Newcastle", era: "modern", league: "Premier League", position: "LW", age: 23, marketValue: 55, tier: "B", playStyle: "Direct" },
+    { name: "Sandro Tonali", club: "Newcastle", era: "modern", league: "Premier League", position: "CM", age: 24, marketValue: 45, tier: "B", playStyle: "Pirlo?" },
+    { name: "Ollie Watkins", club: "Aston Villa", era: "modern", league: "Premier League", position: "ST", age: 29, marketValue: 55, tier: "B", playStyle: "Late Goal" },
+    { name: "Emiliano Martinez", club: "Aston Villa", era: "modern", league: "Premier League", position: "GK", age: 32, marketValue: 35, tier: "A", playStyle: "Dibu" },
+    { name: "Youri Tielemans", club: "Aston Villa", era: "modern", league: "Premier League", position: "CM", age: 27, marketValue: 30, tier: "C", playStyle: "Rocket" },
+    { name: "Amadou Onana", club: "Aston Villa", era: "modern", league: "Premier League", position: "CDM", age: 23, marketValue: 50, tier: "B", playStyle: "Giant" },
+    { name: "Eberechi Eze", club: "Crystal Palace", era: "modern", league: "Premier League", position: "LW", age: 26, marketValue: 55, tier: "B", playStyle: "Streets" },
+    { name: "Jean-Philippe Mateta", club: "Crystal Palace", era: "modern", league: "Premier League", position: "ST", age: 27, marketValue: 30, tier: "C", playStyle: "Corner Flag" },
+    { name: "Adam Wharton", club: "Crystal Palace", era: "modern", league: "Premier League", position: "CM", age: 20, marketValue: 40, tier: "C", playStyle: "Vision" },
+    { name: "Lucas Paqueta", club: "West Ham", era: "modern", league: "Premier League", position: "CAM", age: 27, marketValue: 50, tier: "B", playStyle: "Flair" },
+    { name: "Jarrod Bowen", club: "West Ham", era: "modern", league: "Premier League", position: "RW", age: 28, marketValue: 45, tier: "B", playStyle: "Worker" },
+    { name: "Mohammed Kudus", club: "West Ham", era: "modern", league: "Premier League", position: "RW", age: 24, marketValue: 50, tier: "B", playStyle: "Power" },
+    { name: "Kaoru Mitoma", club: "Brighton", era: "modern", league: "Premier League", position: "LW", age: 27, marketValue: 45, tier: "B", playStyle: "Dribble" },
+    { name: "Evan Ferguson", club: "Brighton", era: "modern", league: "Premier League", position: "ST", age: 20, marketValue: 40, tier: "C", playStyle: "Prospect" },
+    { name: "Joao Pedro", club: "Brighton", era: "modern", league: "Premier League", position: "CF", age: 23, marketValue: 45, tier: "B", playStyle: "Samba" },
+    { name: "Bryan Mbeumo", club: "Brentford", era: "modern", league: "Premier League", position: "RW", age: 25, marketValue: 40, tier: "B", playStyle: "Underrated" },
+    { name: "Morgan Gibbs-White", club: "Nottingham Forest", era: "modern", league: "Premier League", position: "CAM", age: 24, marketValue: 40, tier: "B", playStyle: "Creator" },
+    { name: "Murillo", club: "Nottingham Forest", era: "modern", league: "Premier League", position: "CB", age: 22, marketValue: 40, tier: "B", playStyle: "Tank" },
+
+    // ==========================================
+    // LA LIGA (FULL SQUADS)
+    // ==========================================
+
+    // REAL MADRID
+    { name: "Kylian Mbappe", club: "Real Madrid", era: "modern", league: "La Liga", position: "ST", age: 26, marketValue: 180, tier: "S", playStyle: "Speed" },
+    { name: "Vinicius Jr", club: "Real Madrid", era: "modern", league: "La Liga", position: "LW", age: 24, marketValue: 200, tier: "S", playStyle: "Ballon D'Or" },
+    { name: "Jude Bellingham", club: "Real Madrid", era: "modern", league: "La Liga", position: "CAM", age: 21, marketValue: 180, tier: "S", playStyle: "Clutch" },
+    { name: "Rodrygo", club: "Real Madrid", era: "modern", league: "La Liga", position: "RW", age: 24, marketValue: 100, tier: "A", playStyle: "UCL Man" },
+    { name: "Fede Valverde", club: "Real Madrid", era: "modern", league: "La Liga", position: "CM", age: 26, marketValue: 120, tier: "A", playStyle: "Lung" },
+    { name: "Eduardo Camavinga", club: "Real Madrid", era: "modern", league: "La Liga", position: "CDM", age: 22, marketValue: 90, tier: "A", playStyle: "Smooth" },
+    { name: "Aurelien Tchouameni", club: "Real Madrid", era: "modern", league: "La Liga", position: "CDM", age: 24, marketValue: 90, tier: "A", playStyle: "Rock" },
+    { name: "Luka Modric", club: "Real Madrid", era: "modern", league: "La Liga", position: "CM", age: 39, marketValue: 10, tier: "A", playStyle: "Legend" },
+    { name: "Antonio Rudiger", club: "Real Madrid", era: "modern", league: "La Liga", position: "CB", age: 31, marketValue: 30, tier: "A", playStyle: "Crazy" },
+    { name: "Eder Militao", club: "Real Madrid", era: "modern", league: "La Liga", position: "CB", age: 26, marketValue: 60, tier: "A", playStyle: "Fast" },
+    { name: "Thibaut Courtois", club: "Real Madrid", era: "modern", league: "La Liga", position: "GK", age: 32, marketValue: 30, tier: "A", playStyle: "Wall" },
+    { name: "Dani Carvajal", club: "Real Madrid", era: "modern", league: "La Liga", position: "RB", age: 32, marketValue: 15, tier: "B", playStyle: "Experience" },
+    { name: "Ferland Mendy", club: "Real Madrid", era: "modern", league: "La Liga", position: "LB", age: 29, marketValue: 20, tier: "B", playStyle: "Lockdown" },
+    { name: "Arda Guler", club: "Real Madrid", era: "modern", league: "La Liga", position: "CAM", age: 19, marketValue: 45, tier: "C", playStyle: "Turkish Messi" },
+    { name: "Endrick", club: "Real Madrid", era: "modern", league: "La Liga", position: "ST", age: 18, marketValue: 50, tier: "B", playStyle: "Bobby" },
+    { name: "Brahim Diaz", club: "Real Madrid", era: "modern", league: "La Liga", position: "CAM", age: 25, marketValue: 40, tier: "B", playStyle: "Dribble" },
+
+    // BARCELONA
+    { name: "Lamine Yamal", club: "Barcelona", era: "modern", league: "La Liga", position: "RW", age: 17, marketValue: 150, tier: "S", playStyle: "Future GOAT" },
+    { name: "Pedri", club: "Barcelona", era: "modern", league: "La Liga", position: "CM", age: 22, marketValue: 100, tier: "A", playStyle: "Iniesta Regen" },
+    { name: "Gavi", club: "Barcelona", era: "modern", league: "La Liga", position: "CM", age: 20, marketValue: 80, tier: "A", playStyle: "Warrior" },
+    { name: "Robert Lewandowski", club: "Barcelona", era: "modern", league: "La Liga", position: "ST", age: 36, marketValue: 15, tier: "A", playStyle: "Goals" },
+    { name: "Raphinha", club: "Barcelona", era: "modern", league: "La Liga", position: "RW", age: 28, marketValue: 60, tier: "A", playStyle: "Workrate" },
+    { name: "Frenkie de Jong", club: "Barcelona", era: "modern", league: "La Liga", position: "CM", age: 27, marketValue: 60, tier: "A", playStyle: "Carrier" },
+    { name: "Dani Olmo", club: "Barcelona", era: "modern", league: "La Liga", position: "CAM", age: 26, marketValue: 60, tier: "B", playStyle: "Technique" },
+    { name: "Ronald Araujo", club: "Barcelona", era: "modern", league: "La Liga", position: "CB", age: 25, marketValue: 70, tier: "A", playStyle: "Beast" },
+    { name: "Jules Kounde", club: "Barcelona", era: "modern", league: "La Liga", position: "RB", age: 26, marketValue: 55, tier: "A", playStyle: "Fashion" },
+    { name: "Pau Cubarsi", club: "Barcelona", era: "modern", league: "La Liga", position: "CB", age: 17, marketValue: 60, tier: "B", playStyle: "Vision" },
+    { name: "Alejandro Balde", club: "Barcelona", era: "modern", league: "La Liga", position: "LB", age: 21, marketValue: 50, tier: "B", playStyle: "Speed" },
+    { name: "Marc-Andre ter Stegen", club: "Barcelona", era: "modern", league: "La Liga", position: "GK", age: 32, marketValue: 30, tier: "A", playStyle: "Sweeper" },
+    { name: "Ferran Torres", club: "Barcelona", era: "modern", league: "La Liga", position: "LW", age: 24, marketValue: 30, tier: "C", playStyle: "Shark" },
+    { name: "Fermin Lopez", club: "Barcelona", era: "modern", league: "La Liga", position: "CAM", age: 21, marketValue: 35, tier: "C", playStyle: "Energy" },
+    { name: "Marc Casado", club: "Barcelona", era: "modern", league: "La Liga", position: "CDM", age: 21, marketValue: 20, tier: "C", playStyle: "Pivot" },
+
+    // OTHER LA LIGA
+    { name: "Antoine Griezmann", club: "Atletico Madrid", era: "modern", league: "La Liga", position: "SS", age: 33, marketValue: 25, tier: "B", playStyle: "IQ" },
+    { name: "Julian Alvarez", club: "Atletico Madrid", era: "modern", league: "La Liga", position: "ST", age: 24, marketValue: 90, tier: "A", playStyle: "Spider" },
+    { name: "Jan Oblak", club: "Atletico Madrid", era: "modern", league: "La Liga", position: "GK", age: 31, marketValue: 30, tier: "A", playStyle: "Wall" },
+    { name: "Nico Williams", club: "Athletic Bilbao", era: "modern", league: "La Liga", position: "LW", age: 22, marketValue: 70, tier: "A", playStyle: "Euro Star" },
+    { name: "Oihan Sancet", club: "Athletic Bilbao", era: "modern", league: "La Liga", position: "CAM", age: 24, marketValue: 35, tier: "C", playStyle: "Box" },
+    { name: "Takefusa Kubo", club: "Real Sociedad", era: "modern", league: "La Liga", position: "RW", age: 23, marketValue: 50, tier: "B", playStyle: "Skill" },
+    { name: "Martin Zubimendi", club: "Real Sociedad", era: "modern", league: "La Liga", position: "CDM", age: 25, marketValue: 50, tier: "B", playStyle: "Anchor" },
+    { name: "Alex Baena", club: "Villarreal", era: "modern", league: "La Liga", position: "CAM", age: 23, marketValue: 40, tier: "C", playStyle: "Assist" },
+    { name: "Isco", club: "Real Betis", era: "modern", league: "La Liga", position: "CAM", age: 32, marketValue: 10, tier: "C", playStyle: "Disco" },
+
+    // ==========================================
+    // BUNDESLIGA & OTHERS
+    // ==========================================
+    { name: "Jamal Musiala", club: "Bayern Munich", era: "modern", league: "Bundesliga", position: "CAM", age: 21, marketValue: 140, tier: "S", playStyle: "Magic" },
+    { name: "Harry Kane", club: "Bayern Munich", era: "modern", league: "Bundesliga", position: "ST", age: 31, marketValue: 75, tier: "S", playStyle: "Leader" },
+    { name: "Michael Olise", club: "Bayern Munich", era: "modern", league: "Bundesliga", position: "RW", age: 22, marketValue: 60, tier: "B", playStyle: "Skills" },
+    { name: "Florian Wirtz", club: "Bayer Leverkusen", era: "modern", league: "Bundesliga", position: "CAM", age: 21, marketValue: 130, tier: "S", playStyle: "Space" },
+    { name: "Jeremie Frimpong", club: "Bayer Leverkusen", era: "modern", league: "Bundesliga", position: "RWB", age: 23, marketValue: 50, tier: "A", playStyle: "Warp Speed" },
+    { name: "Victor Boniface", club: "Bayer Leverkusen", era: "modern", league: "Bundesliga", position: "ST", age: 23, marketValue: 45, tier: "B", playStyle: "Tank" },
+    { name: "Xavi Simons", club: "RB Leipzig", era: "modern", league: "Bundesliga", position: "CAM", age: 21, marketValue: 80, tier: "A", playStyle: "Golden" },
+    { name: "Lois Openda", club: "RB Leipzig", era: "modern", league: "Bundesliga", position: "ST", age: 24, marketValue: 60, tier: "B", playStyle: "Fast" },
+    { name: "Benjamin Sesko", club: "RB Leipzig", era: "modern", league: "Bundesliga", position: "ST", age: 21, marketValue: 50, tier: "B", playStyle: "Tall" },
+    { name: "Serhou Guirassy", club: "Borussia Dortmund", era: "modern", league: "Bundesliga", position: "ST", age: 28, marketValue: 40, tier: "B", playStyle: "Goals" },
+    { name: "Julian Brandt", club: "Borussia Dortmund", era: "modern", league: "Bundesliga", position: "CAM", age: 28, marketValue: 40, tier: "B", playStyle: "Creator" },
+    { name: "Nico Schlotterbeck", club: "Borussia Dortmund", era: "modern", league: "Bundesliga", position: "CB", age: 25, marketValue: 40, tier: "B", playStyle: "Left Foot" },
+    { name: "Jamie Gittens", club: "Borussia Dortmund", era: "modern", league: "Bundesliga", position: "LW", age: 20, marketValue: 35, tier: "C", playStyle: "Dribble" },
+
+    // SERIE A / LIGUE 1
+    { name: "Lautaro Martinez", club: "Inter Milan", era: "modern", league: "Serie A", position: "ST", age: 27, marketValue: 100, tier: "A", playStyle: "Bull" },
+    { name: "Nicolo Barella", club: "Inter Milan", era: "modern", league: "Serie A", position: "CM", age: 27, marketValue: 80, tier: "A", playStyle: "Energy" },
+    { name: "Marcus Thuram", club: "Inter Milan", era: "modern", league: "Serie A", position: "ST", age: 27, marketValue: 60, tier: "B", playStyle: "Tikus" },
+    { name: "Hakan Calhanoglu", club: "Inter Milan", era: "modern", league: "Serie A", position: "CDM", age: 30, marketValue: 45, tier: "B", playStyle: "Long Shot" },
+    { name: "Rafael Leao", club: "AC Milan", era: "modern", league: "Serie A", position: "LW", age: 25, marketValue: 80, tier: "A", playStyle: "Smile" },
+    { name: "Theo Hernandez", club: "AC Milan", era: "modern", league: "Serie A", position: "LB", age: 27, marketValue: 60, tier: "A", playStyle: "Train" },
+    { name: "Christian Pulisic", club: "AC Milan", era: "modern", league: "Serie A", position: "RW", age: 26, marketValue: 50, tier: "B", playStyle: "Captain America" },
+    { name: "Dusan Vlahovic", club: "Juventus", era: "modern", league: "Serie A", position: "ST", age: 24, marketValue: 65, tier: "A", playStyle: "Finisher" },
+    { name: "Kenan Yildiz", club: "Juventus", era: "modern", league: "Serie A", position: "SS", age: 19, marketValue: 40, tier: "C", playStyle: "Jewel" },
+    { name: "Khvicha Kvaratskhelia", club: "Napoli", era: "modern", league: "Serie A", position: "LW", age: 23, marketValue: 85, tier: "A", playStyle: "Kvaradona" },
+    { name: "Ademola Lookman", club: "Atalanta", era: "modern", league: "Serie A", position: "LW", age: 26, marketValue: 45, tier: "B", playStyle: "Hattrick" },
+    { name: "Bradley Barcola", club: "PSG", era: "modern", league: "Ligue 1", position: "LW", age: 22, marketValue: 65, tier: "B", playStyle: "Henry?" },
+    { name: "Ousmane Dembele", club: "PSG", era: "modern", league: "Ligue 1", position: "RW", age: 27, marketValue: 60, tier: "B", playStyle: "Chaos" },
+    { name: "Achraf Hakimi", club: "PSG", era: "modern", league: "Ligue 1", position: "RB", age: 26, marketValue: 65, tier: "A", playStyle: "Speed" },
+    { name: "Warren Zaire-Emery", club: "PSG", era: "modern", league: "Ligue 1", position: "CM", age: 18, marketValue: 60, tier: "B", playStyle: "Robot" },
+    { name: "Angel Gomes", club: "Lille", era: "modern", league: "Ligue 1", position: "CM", age: 24, marketValue: 30, tier: "C", playStyle: "Tech" },
+    { name: "Mason Greenwood", club: "Marseille", era: "modern", league: "Ligue 1", position: "RW", age: 23, marketValue: 35, tier: "C", playStyle: "Star" },
+
+    // ==========================================
+    // LEGENDS (EXPANDED TO ~100)
+    // ==========================================
+    // BRAZIL
+    { name: "Pele", club: "Santos", era: "legends", league: "International", position: "CF", age: 30, marketValue: 0, tier: "S", playStyle: "The King" },
+    { name: "Ronaldo Nazario", club: "Real Madrid", era: "legends", league: "La Liga", position: "ST", age: 26, marketValue: 0, tier: "S", playStyle: "Phenomenon" },
+    { name: "Ronaldinho", club: "Barcelona", era: "legends", league: "La Liga", position: "LW", age: 28, marketValue: 0, tier: "S", playStyle: "Joy" },
+    { name: "Kaka", club: "AC Milan", era: "legends", league: "Serie A", position: "CAM", age: 26, marketValue: 0, tier: "S", playStyle: "Glide" },
+    { name: "Cafu", club: "AC Milan", era: "legends", league: "Serie A", position: "RB", age: 32, marketValue: 0, tier: "A", playStyle: "Legend" },
+    { name: "Roberto Carlos", club: "Real Madrid", era: "legends", league: "La Liga", position: "LB", age: 29, marketValue: 0, tier: "S", playStyle: "Bullet" },
+    { name: "Rivaldo", club: "Barcelona", era: "legends", league: "La Liga", position: "LW", age: 28, marketValue: 0, tier: "A", playStyle: "Left Foot" },
+    { name: "Zico", club: "Flamengo", era: "legends", league: "International", position: "CAM", age: 29, marketValue: 0, tier: "S", playStyle: "White Pele" },
+    { name: "Garrincha", club: "Botafogo", era: "legends", league: "International", position: "RW", age: 29, marketValue: 0, tier: "S", playStyle: "Bent Legs" },
+    { name: "Socrates", club: "Corinthians", era: "legends", league: "International", position: "CM", age: 30, marketValue: 0, tier: "A", playStyle: "Doctor" },
+    { name: "Romario", club: "Barcelona", era: "legends", league: "La Liga", position: "ST", age: 28, marketValue: 0, tier: "A", playStyle: "1000 Goals" },
+    { name: "Adriano", club: "Inter Milan", era: "legends", league: "Serie A", position: "ST", age: 23, marketValue: 0, tier: "B", playStyle: "Emperor" },
+
+    // FRANCE
+    { name: "Zinedine Zidane", club: "Real Madrid", era: "legends", league: "La Liga", position: "CAM", age: 30, marketValue: 0, tier: "S", playStyle: "God" },
+    { name: "Thierry Henry", club: "Arsenal", era: "legends", league: "Premier League", position: "ST", age: 28, marketValue: 0, tier: "S", playStyle: "Va Va Voom" },
+    { name: "Patrick Vieira", club: "Arsenal", era: "legends", league: "Premier League", position: "CDM", age: 28, marketValue: 0, tier: "S", playStyle: "Captain" },
+    { name: "Michel Platini", club: "Juventus", era: "legends", league: "Serie A", position: "CAM", age: 30, marketValue: 0, tier: "S", playStyle: "Le Roi" },
+    { name: "Eric Cantona", club: "Man Utd", era: "legends", league: "Premier League", position: "CF", age: 30, marketValue: 0, tier: "S", playStyle: "Collar" },
+    { name: "Frank Ribery", club: "Bayern Munich", era: "legends", league: "Bundesliga", position: "LW", age: 29, marketValue: 0, tier: "A", playStyle: "Scarface" },
+    { name: "Claude Makelele", club: "Chelsea", era: "legends", league: "Premier League", position: "CDM", age: 32, marketValue: 0, tier: "A", playStyle: "Definition" },
+    { name: "Marcel Desailly", club: "AC Milan", era: "legends", league: "Serie A", position: "CB", age: 30, marketValue: 0, tier: "A", playStyle: "Rock" },
+    { name: "Lilian Thuram", club: "Juventus", era: "legends", league: "Serie A", position: "RB", age: 30, marketValue: 0, tier: "A", playStyle: "Intellectual" },
+
+    // NETHERLANDS
+    { name: "Johan Cruyff", club: "Barcelona", era: "legends", league: "La Liga", position: "CF", age: 28, marketValue: 0, tier: "S", playStyle: "Total Football" },
+    { name: "Marco van Basten", club: "AC Milan", era: "legends", league: "Serie A", position: "ST", age: 26, marketValue: 0, tier: "S", playStyle: "Utrecht Swan" },
+    { name: "Ruud Gullit", club: "AC Milan", era: "legends", league: "Serie A", position: "CF", age: 28, marketValue: 0, tier: "S", playStyle: "Dreadlocks" },
+    { name: "Frank Rijkaard", club: "AC Milan", era: "legends", league: "Serie A", position: "CDM", age: 28, marketValue: 0, tier: "A", playStyle: "Complete" },
+    { name: "Dennis Bergkamp", club: "Arsenal", era: "legends", league: "Premier League", position: "CF", age: 30, marketValue: 0, tier: "S", playStyle: "Non-Flying" },
+    { name: "Arjen Robben", club: "Bayern Munich", era: "legends", league: "Bundesliga", position: "RW", age: 29, marketValue: 0, tier: "A", playStyle: "Cut Inside" },
+    { name: "Ruud van Nistelrooy", club: "Man Utd", era: "legends", league: "Premier League", position: "ST", age: 28, marketValue: 0, tier: "A", playStyle: "Poacher" },
+    { name: "Clarence Seedorf", club: "AC Milan", era: "legends", league: "Serie A", position: "CM", age: 29, marketValue: 0, tier: "A", playStyle: "4 UCLs" },
+    { name: "Edwin van der Sar", club: "Man Utd", era: "legends", league: "Premier League", position: "GK", age: 35, marketValue: 0, tier: "A", playStyle: "Ice" },
+
+    // ENGLAND
+    { name: "Bobby Charlton", club: "Man Utd", era: "legends", league: "Premier League", position: "CAM", age: 30, marketValue: 0, tier: "S", playStyle: "Sir" },
+    { name: "Wayne Rooney", club: "Man Utd", era: "legends", league: "Premier League", position: "CF", age: 24, marketValue: 0, tier: "S", playStyle: "Street" },
+    { name: "David Beckham", club: "Man Utd", era: "legends", league: "Premier League", position: "RM", age: 27, marketValue: 0, tier: "A", playStyle: "Cross" },
+    { name: "Paul Scholes", club: "Man Utd", era: "legends", league: "Premier League", position: "CM", age: 30, marketValue: 0, tier: "A", playStyle: "Tree" },
+    { name: "Steven Gerrard", club: "Liverpool", era: "legends", league: "Premier League", position: "CM", age: 28, marketValue: 0, tier: "S", playStyle: "Olympiakos" },
+    { name: "Frank Lampard", club: "Chelsea", era: "legends", league: "Premier League", position: "CM", age: 28, marketValue: 0, tier: "S", playStyle: "Late Arrival" },
+    { name: "John Terry", club: "Chelsea", era: "legends", league: "Premier League", position: "CB", age: 29, marketValue: 0, tier: "A", playStyle: "Captain" },
+    { name: "Rio Ferdinand", club: "Man Utd", era: "legends", league: "Premier League", position: "CB", age: 29, marketValue: 0, tier: "A", playStyle: "Baller" },
+    { name: "Ashley Cole", club: "Chelsea", era: "legends", league: "Premier League", position: "LB", age: 29, marketValue: 0, tier: "A", playStyle: "Pocket" },
+    { name: "Alan Shearer", club: "Newcastle", era: "legends", league: "Premier League", position: "ST", age: 28, marketValue: 0, tier: "A", playStyle: "Hand" },
+    { name: "Gary Lineker", club: "Tottenham", era: "legends", league: "Premier League", position: "ST", age: 28, marketValue: 0, tier: "B", playStyle: "Poacher" },
+    { name: "Michael Owen", club: "Liverpool", era: "legends", league: "Premier League", position: "ST", age: 21, marketValue: 0, tier: "A", playStyle: "Wonderkid" },
+
+    // ITALY
+    { name: "Paolo Maldini", club: "AC Milan", era: "legends", league: "Serie A", position: "LB", age: 35, marketValue: 0, tier: "S", playStyle: "Il Capitano" },
+    { name: "Roberto Baggio", club: "Juventus", era: "legends", league: "Serie A", position: "CF", age: 27, marketValue: 0, tier: "S", playStyle: "Ponytail" },
+    { name: "Alessandro Del Piero", club: "Juventus", era: "legends", league: "Serie A", position: "SS", age: 28, marketValue: 0, tier: "S", playStyle: "Zone" },
+    { name: "Francesco Totti", club: "Roma", era: "legends", league: "Serie A", position: "AM", age: 30, marketValue: 0, tier: "S", playStyle: "Rome" },
+    { name: "Andrea Pirlo", club: "Juventus", era: "legends", league: "Serie A", position: "CM", age: 32, marketValue: 0, tier: "A", playStyle: "Wine" },
+    { name: "Gianluigi Buffon", club: "Juventus", era: "legends", league: "Serie A", position: "GK", age: 30, marketValue: 0, tier: "S", playStyle: "Gigi" },
+    { name: "Fabio Cannavaro", club: "Juventus", era: "legends", league: "Serie A", position: "CB", age: 32, marketValue: 0, tier: "A", playStyle: "Berlin" },
+    { name: "Alessandro Nesta", club: "AC Milan", era: "legends", league: "Serie A", position: "CB", age: 30, marketValue: 0, tier: "A", playStyle: "Slide" },
+    { name: "Gennaro Gattuso", club: "AC Milan", era: "legends", league: "Serie A", position: "CDM", age: 29, marketValue: 0, tier: "B", playStyle: "Dog" },
+    { name: "Filippo Inzaghi", club: "AC Milan", era: "legends", league: "Serie A", position: "ST", age: 30, marketValue: 0, tier: "B", playStyle: "Offside" },
+
+    // GERMANY
+    { name: "Franz Beckenbauer", club: "Bayern Munich", era: "legends", league: "Bundesliga", position: "CB", age: 30, marketValue: 0, tier: "S", playStyle: "Kaiser" },
+    { name: "Gerd Muller", club: "Bayern Munich", era: "legends", league: "Bundesliga", position: "ST", age: 28, marketValue: 0, tier: "S", playStyle: "Bomber" },
+    { name: "Lothar Matthaus", club: "Inter Milan", era: "legends", league: "Serie A", position: "CDM", age: 30, marketValue: 0, tier: "S", playStyle: "Complete" },
+    { name: "Oliver Kahn", club: "Bayern Munich", era: "legends", league: "Bundesliga", position: "GK", age: 32, marketValue: 0, tier: "A", playStyle: "Titan" },
+    { name: "Philipp Lahm", club: "Bayern Munich", era: "legends", league: "Bundesliga", position: "RB", age: 29, marketValue: 0, tier: "A", playStyle: "Smart" },
+    { name: "Bastian Schweinsteiger", club: "Bayern Munich", era: "legends", league: "Bundesliga", position: "CM", age: 29, marketValue: 0, tier: "A", playStyle: "Boss" },
+    { name: "Miroslav Klose", club: "Lazio", era: "legends", league: "Serie A", position: "ST", age: 30, marketValue: 0, tier: "B", playStyle: "Flip" },
+
+    // OTHER LEGENDS
+    { name: "Diego Maradona", club: "Napoli", era: "legends", league: "Serie A", position: "CAM", age: 26, marketValue: 0, tier: "S", playStyle: "Hand of God" },
+    { name: "Alfredo Di Stefano", club: "Real Madrid", era: "legends", league: "La Liga", position: "ST", age: 30, marketValue: 0, tier: "S", playStyle: "Total" },
+    { name: "Ferenc Puskas", club: "Real Madrid", era: "legends", league: "La Liga", position: "ST", age: 30, marketValue: 0, tier: "S", playStyle: "Galloping Major" },
+    { name: "Eusebio", club: "Benfica", era: "legends", league: "International", position: "ST", age: 26, marketValue: 0, tier: "S", playStyle: "Tornado" },
+    { name: "George Best", club: "Man Utd", era: "legends", league: "Premier League", position: "RW", age: 24, marketValue: 0, tier: "S", playStyle: "Beatle" },
+    { name: "Lev Yashin", club: "Dynamo Moscow", era: "legends", league: "International", position: "GK", age: 30, marketValue: 0, tier: "S", playStyle: "Spider" },
+    { name: "Didier Drogba", club: "Chelsea", era: "legends", league: "Premier League", position: "ST", age: 30, marketValue: 0, tier: "A", playStyle: "Big Game" },
+    { name: "Samuel Eto'o", club: "Barcelona", era: "legends", league: "La Liga", position: "ST", age: 28, marketValue: 0, tier: "A", playStyle: "Lion" },
+    { name: "Yaya Toure", club: "Man City", era: "legends", league: "Premier League", position: "CM", age: 29, marketValue: 0, tier: "A", playStyle: "Tank" },
+    { name: "Sergio Aguero", club: "Man City", era: "legends", league: "Premier League", position: "ST", age: 27, marketValue: 0, tier: "A", playStyle: "93:20" },
+    { name: "Luis Suarez", club: "Barcelona", era: "legends", league: "La Liga", position: "ST", age: 28, marketValue: 0, tier: "A", playStyle: "Bite" },
+    { name: "Zlatan Ibrahimovic", club: "PSG", era: "legends", league: "Ligue 1", position: "ST", age: 31, marketValue: 0, tier: "A", playStyle: "Lion" },
+
+    // ==========================================
+    // CULT HEROES / STREETS WON'T FORGET
+    // ==========================================
+    { name: "Hatem Ben Arfa", club: "Newcastle", era: "legends", league: "Premier League", position: "RW", age: 25, marketValue: 30, tier: "B", playStyle: "Solo" },
+    { name: "Adel Taarabt", club: "QPR", era: "legends", league: "Premier League", position: "CAM", age: 22, marketValue: 25, tier: "B", playStyle: "Streets" },
+    { name: "Michu", club: "Swansea", era: "legends", league: "Premier League", position: "CAM", age: 26, marketValue: 20, tier: "B", playStyle: "One Season" },
+    { name: "Dimitri Payet", club: "West Ham", era: "legends", league: "Premier League", position: "CAM", age: 29, marketValue: 35, tier: "A", playStyle: "Freekick" },
+    { name: "Jay-Jay Okocha", club: "Bolton", era: "legends", league: "Premier League", position: "CAM", age: 30, marketValue: 20, tier: "B", playStyle: "Skills" },
+    { name: "Tugay Kerimoğlu", club: "Blackburn", era: "legends", league: "Premier League", position: "CM", age: 34, marketValue: 10, tier: "C", playStyle: "Class" },
+    { name: "Morten Gamst Pedersen", club: "Blackburn", era: "legends", league: "Premier League", position: "LM", age: 26, marketValue: 15, tier: "C", playStyle: "Wand" },
+    { name: "Rory Delap", club: "Stoke City", era: "legends", league: "Premier League", position: "CM", age: 30, marketValue: 10, tier: "C", playStyle: "Throw-in" },
+    { name: "Peter Crouch", club: "Stoke City", era: "legends", league: "Premier League", position: "ST", age: 29, marketValue: 15, tier: "B", playStyle: "Robot" },
+    { name: "Santi Cazorla", club: "Arsenal", era: "legends", league: "Premier League", position: "CM", age: 29, marketValue: 30, tier: "B", playStyle: "Two Footed" },
+    { name: "Juninho", club: "Lyon", era: "legends", league: "Ligue 1", position: "CM", age: 30, marketValue: 0, tier: "A", playStyle: "Knuckleball" },
+    { name: "Ricardo Quaresma", club: "Porto", era: "legends", league: "International", position: "RW", age: 27, marketValue: 25, tier: "B", playStyle: "Trivela" },
+    { name: "Edgar Davids", club: "Juventus", era: "legends", league: "Serie A", position: "CDM", age: 28, marketValue: 0, tier: "A", playStyle: "Glasses" },
+    { name: "Guti", club: "Real Madrid", era: "legends", league: "La Liga", position: "CAM", age: 29, marketValue: 0, tier: "B", playStyle: "Backheel" },
+    { name: "Antonio Cassano", club: "Roma", era: "legends", league: "Serie A", position: "SS", age: 24, marketValue: 0, tier: "B", playStyle: "Talent" }
+];
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = PLAYERS_DATABASE;
+}

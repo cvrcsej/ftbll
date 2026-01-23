@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQUAD BUILDER - CLASSIFIED DOSSIER</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="squad-page">
+    <div class="squad-full-container">
+        <div class="squad-header">
+            <div class="squad-title">VISUAL SQUAD BUILDER</div>
+            <div class="squad-nav">
+                <select id="squad-manager-select" class="squad-player-select">
+                    <option value="">Select a Manager...</option>
+                </select>
+                <a href="index.html" class="back-link">← RETURN TO HQ</a>
+            </div>
+        </div>
+
+        <div class="squad-main-layout full-page">
+            <div class="pitch-container">
+                <div class="pitch">
+                    <!-- 4-3-3 Formation Slots -->
+                    <div class="pitch-slot slot-gk" data-pos="GK"></div>
+                    <div class="pitch-slot slot-lb" data-pos="LB"></div>
+                    <div class="pitch-slot slot-cb1" data-pos="CB"></div>
+                    <div class="pitch-slot slot-cb2" data-pos="CB"></div>
+                    <div class="pitch-slot slot-rb" data-pos="RB"></div>
+                    <div class="pitch-slot slot-cm1" data-pos="CM"></div>
+                    <div class="pitch-slot slot-cdm" data-pos="CDM"></div>
+                    <div class="pitch-slot slot-cm2" data-pos="CM"></div>
+                    <div class="pitch-slot slot-lw" data-pos="LW"></div>
+                    <div class="pitch-slot slot-st" data-pos="ST"></div>
+                    <div class="pitch-slot slot-rw" data-pos="RW"></div>
+                </div>
+            </div>
+
+            <div class="bench-section">
+                <div class="bench-label">RESERVES</div>
+                <div id="bench-list" class="bench-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
