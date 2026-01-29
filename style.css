@@ -53,8 +53,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 100vh;
-    /* Fixed height to create a neat dashboard */
+    min-height: 100vh;
+    /* Allow natural height, not fixed */
 }
 
 /* --- DASHBOARD GRID --- */
@@ -62,27 +62,21 @@ body {
     display: grid;
     grid-template-columns: 320px 1fr 320px;
     gap: 20px;
-    flex: 1;
-    /* Stretch to fill container height */
-    min-height: 0;
-    /* Important for scrollable children */
+    align-items: start;
+    /* Align items to top to prevent stretching */
 }
 
 .multiplayer-section,
 .auction-center-column,
 .side-tools-column {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    min-height: 0;
     gap: 20px;
 }
 
 .dashboard-grid .paper-card {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    min-height: 0;
 }
 
 @media (max-width: 1200px) {
@@ -256,7 +250,8 @@ input:focus {
 
 /* --- PLAYER REPORT (MAIN DISPLAY) --- */
 .player-panel {
-    min-height: 500px;
+    min-height: 400px;
+    max-height: 600px;
     position: relative;
     z-index: 1;
     border: 2px solid var(--ink-black);
@@ -265,11 +260,11 @@ input:focus {
 }
 
 #player-display {
-    height: 100%;
     padding: 25px;
     display: flex;
     flex-direction: column;
     position: relative;
+    min-height: 400px;
 }
 
 /* CARD LAYOUT - DOSSIER STYLE */
@@ -1162,7 +1157,7 @@ input:focus {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    flex: 1;
+    max-height: 500px;
     overflow-y: auto;
     padding: 10px;
     background: rgba(0, 0, 0, 0.02);

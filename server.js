@@ -25,6 +25,33 @@ app.get('/api/players', async (req, res) => {
     try {
         const { era, league, position, tier, club } = req.query;
 
+        // Offline / Local Data Fallback
+        if (!supabase) {
+            let data = PLAYERS_DATABASE;
+
+            if (era && era !== 'all') data = data.filter(p => p.era === era);
+            if (league && league !== 'all') data = data.filter(p => p.league === league);
+            if (tier && tier !== 'all') data = data.filter(p => p.tier === tier);
+
+            if (club) {
+                const clubs = Array.isArray(club) ? club : club.split(',');
+                data = data.filter(p => clubs.includes(p.club));
+            }
+
+            if (position && position !== 'all') {
+                const posMap = {
+                    'GK': ['GK'],
+                    'DEF': ['CB', 'LB', 'RB', 'LWB', 'RWB'],
+                    'MID': ['CDM', 'CM', 'CAM', 'RM', 'LM'],
+                    'FWD': ['ST', 'CF', 'RW', 'LW', 'SS']
+                };
+                const allowedPositions = posMap[position] || [];
+                data = data.filter(p => allowedPositions.includes(p.position));
+            }
+
+            return res.json(data);
+        }
+
         let query = supabase.from('players').select('*');
 
         if (era && era !== 'all') query = query.eq('era', era);
@@ -112,6 +139,12 @@ app.get('/api/players/random', (req, res) => {
 // API: Get All Clubs
 app.get('/api/meta/clubs', async (req, res) => {
     try {
+        // Offline / Local Data Fallback
+        if (!supabase) {
+            const clubs = [...new Set(PLAYERS_DATABASE.map(p => p.club))].sort();
+            return res.json(clubs);
+        }
+
         // Fetch distinct clubs
         // Supabase doesn't have a direct .distinct() in JS client easily without .csv() or raw SQL often, 
         // but creating a view or just selecting 'club' and processing set is fine for small DBs.

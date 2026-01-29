@@ -8,7 +8,6 @@ class MultiplayerAuctioneer {
         this.usedPlayers = new Set();
         this.playersShown = 0;
         this.audioContext = null;
-        this.selectedClubs = new Set();
         this.currentItem = null;
         this.playerIdCounter = 0;
         this.currentBids = [];
@@ -62,7 +61,7 @@ class MultiplayerAuctioneer {
         this.leagueFilter = document.getElementById('league-filter');
         this.positionFilter = document.getElementById('position-filter');
         this.tierFilter = document.getElementById('tier-filter');
-        this.clubFiltersContainer = document.getElementById('club-filters-container');
+        this.clubFilter = document.getElementById('club-filter');
         this.budgetInput = document.getElementById('budget-input');
         this.playerDisplay = document.getElementById('player-display');
         this.nextPlayerBtn = document.getElementById('next-player-btn');
@@ -115,34 +114,25 @@ class MultiplayerAuctioneer {
             const response = await fetch('/api/meta/clubs');
             const clubs = await response.json();
 
-            this.clubFiltersContainer.innerHTML = '';
+            const clubFilter = document.getElementById('club-filter');
+            if (!clubFilter) return;
 
+            // Keep the "ALL CLUBS" option and add individual clubs
             clubs.forEach(club => {
-                const label = document.createElement('label');
-                label.className = 'club-checkbox-item';
+                const option = document.createElement('option');
+                option.value = club;
+                option.textContent = club;
+                clubFilter.appendChild(option);
+            });
 
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.value = club;
-
-                checkbox.addEventListener('change', (e) => {
-                    if (e.target.checked) {
-                        this.selectedClubs.add(e.target.value);
-                    } else {
-                        this.selectedClubs.delete(e.target.value);
-                    }
-                    this.updateStats();
-                });
-
-                label.appendChild(checkbox);
-                label.appendChild(document.createTextNode(club));
-                this.clubFiltersContainer.appendChild(label);
+            // Add change listener
+            clubFilter.addEventListener('change', () => {
+                this.updateStats();
             });
 
             this.updateStats(); // Initial stats update
         } catch (error) {
             console.error('Failed to load clubs:', error);
-            this.clubFiltersContainer.innerHTML = '<div class="error">Failed to load clubs. Is server running?</div>';
         }
     }
 
@@ -983,8 +973,8 @@ class MultiplayerAuctioneer {
             tier: this.tierFilter.value
         });
 
-        if (this.selectedClubs.size > 0) {
-            params.append('club', Array.from(this.selectedClubs).join(','));
+        if (this.clubFilter && this.clubFilter.value !== 'all') {
+            params.append('club', this.clubFilter.value);
         }
 
         try {
@@ -1160,8 +1150,8 @@ class MultiplayerAuctioneer {
             tier: this.tierFilter.value
         });
 
-        if (this.selectedClubs.size > 0) {
-            params.append('club', Array.from(this.selectedClubs).join(','));
+        if (this.clubFilter && this.clubFilter.value !== 'all') {
+            params.append('club', this.clubFilter.value);
         }
 
         if (this.usedPlayers.size > 0) {
@@ -1247,7 +1237,7 @@ class MultiplayerAuctioneer {
                     </div>
                 `;
             }
-            this.selectedClubs.clear();
+            if (this.clubFilter) this.clubFilter.value = 'all';
             this.initClubFilters();
             this.renderPlayers();
             this.updateStats();
